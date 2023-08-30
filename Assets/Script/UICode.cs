@@ -40,11 +40,9 @@ namespace InventorySystem{
         public void ClearAllItemUI(){
 
         }
-        [Serializable]
-        public class CategoryInfo{
-            
-        }
+        public void Purchase(){
 
+        }
         // Update is called once per frame
         void Update()
         {
@@ -52,4 +50,11 @@ namespace InventorySystem{
         }
         */
     }
+    /*
+     [Serializable]
+        public class CategoryInfo{
+            
+
+        }
+        */
 }
