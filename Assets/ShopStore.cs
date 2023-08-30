@@ -31,7 +31,7 @@ public class ShopStore : MonoBehaviour
     {
         public string itemName;
         public string itemdascription;
-        public Sprite itemIcon;
+        public Sprite itemShop;
         public ItemType Type;
         public int purchase;
     }
