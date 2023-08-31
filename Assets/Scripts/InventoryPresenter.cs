@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Profiling;
 using UnityEngine;
 
-namespace Toem.InventorySystem
+namespace Toem.ShopSystem
 {
     public class InventoryPresenter : MonoBehaviour
     {
