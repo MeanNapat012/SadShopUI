@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Toem.InventorySystem
+namespace Toem.ShopSystem
 {
     public class UIInventory : MonoBehaviour
     {

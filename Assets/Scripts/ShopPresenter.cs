@@ -1,25 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Profiling;
 using UnityEngine;
 
 namespace Toem.ShopSystem
 {
-    public class InventoryPresenter : MonoBehaviour
+    public class ShopPresenter : MonoBehaviour
     {
+        int currentItemIndex;
         int currentCategoryIndex;
 
         int maxCategoryCount = 3;
+        int maxShowItemCount;
+        int pageSize = 6;
 
+        [SerializeField] UIShop uiShop;
+        [SerializeField] ShopStore shopstore;
         [SerializeField] List<CategoryInfo> categoryInfoList = new List<CategoryInfo>();
+
         void Start()
         {
-        
+            RefreshUI();
         }
 
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Q))
+            if(Input.GetKeyDown(KeyCode.A))
+            {
+                PrevItem();
+            }
+            else if(Input.GetKeyDown(KeyCode.D))
+            {
+                NextItem();
+            }
+            else if (Input.GetKeyDown(KeyCode.Q))
             {
                 PrevCategory();
             }
@@ -27,6 +40,20 @@ namespace Toem.ShopSystem
             {
                 NextCategory();
             }
+        }
+
+        void PrevItem()
+        {
+            if(currentItemIndex <= 0) return;
+            currentItemIndex--;
+            RefreshUI();
+        }
+
+        void NextItem()
+        {
+            if(currentItemIndex >= maxShowItemCount - 1) return;
+            currentItemIndex++;
+            RefreshUI();
         }
 
         void PrevCategory()
@@ -49,10 +76,9 @@ namespace Toem.ShopSystem
             RefreshUI();
         }
 
-        [ContextMenu(nameof(RefreshUI))]
         void RefreshUI()
         {
-
+            
         }
     }
 }
