@@ -16,7 +16,7 @@ namespace Toem.ShopSystem
 
         [Header("Category")]
         [SerializeField] Image categoryIconIamge;
-        [SerializeField] Text categoryText;
+
         [Header("Current Item")]
         [SerializeField] Text ItemName;
         [SerializeField] Text description;
@@ -42,7 +42,6 @@ namespace Toem.ShopSystem
         public void SetCategory(CategoryInfo info)
         {
             categoryIconIamge.sprite = info.icon;
-            categoryText.text = info.name;
         }
 
         public void ClearAllItemUI()
@@ -54,8 +53,7 @@ namespace Toem.ShopSystem
         public void SetCurrentItemInfo(ItemData data){
             description.text = data.description;
             ItemName.text = data.itemName;
-            ItemPrice.text = data.ItemPriceText;
-            
+            ItemPrice.text = data.itemPriceText;
         }
 
     }
@@ -63,7 +61,6 @@ namespace Toem.ShopSystem
     [Serializable]
     public class CategoryInfo
     {
-        public string name;
         public Sprite icon;
     }
 }
