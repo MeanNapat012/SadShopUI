@@ -42,7 +42,6 @@ namespace Toem.ShopSystem
     {
         one,
         two,
-        three,
-        Others
+        three
     }
 }
