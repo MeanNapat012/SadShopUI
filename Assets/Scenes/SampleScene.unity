@@ -399,7 +399,7 @@ MonoBehaviour:
   - itemName: 2
     description: F2
     itemShop: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-    Type: 1
+    Type: 0
     itemPriceText: 9999
     purchase: 9999
   - itemName: 3
@@ -411,13 +411,31 @@ MonoBehaviour:
   - itemName: 4
     description: F4
     itemShop: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-    Type: 2
+    Type: 0
     itemPriceText: 555
     purchase: 555
   - itemName: 5
     description: F5
     itemShop: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-    Type: 1
+    Type: 0
+    itemPriceText: 666
+    purchase: 666
+  - itemName: 6
+    description: F6
+    itemShop: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    Type: 0
+    itemPriceText: 666
+    purchase: 666
+  - itemName: 7
+    description: F7
+    itemShop: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    Type: 0
+    itemPriceText: 666
+    purchase: 666
+  - itemName: 8
+    description: F8
+    itemShop: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    Type: 0
     itemPriceText: 666
     purchase: 666
 --- !u!114 &329705630
@@ -869,7 +887,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 104.02164, y: 69.3536}
+  m_SizeDelta: {x: 104.02164, y: 171.98}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &581125646
 MonoBehaviour:
@@ -958,8 +976,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 52.3, y: -34.1}
-  m_SizeDelta: {x: 51.6686, y: 65.3623}
+  m_AnchoredPosition: {x: 52.3, y: -85.55363}
+  m_SizeDelta: {x: 51.6686, y: 173.3169}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &628702943
 MonoBehaviour:
@@ -1170,8 +1188,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 52.165966, y: -33.852177}
-  m_SizeDelta: {x: 49.98445, y: 63.1762}
+  m_AnchoredPosition: {x: 52.165966, y: -85.82612}
+  m_SizeDelta: {x: 49.9845, y: 177.3054}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &945778043
 MonoBehaviour:
