@@ -35,6 +35,7 @@ namespace Toem.ShopSystem
         public string description;
         public Sprite itemShop;
         public ItemType Type;
+        public string itemPriceText;
         public int purchase;
     }
 

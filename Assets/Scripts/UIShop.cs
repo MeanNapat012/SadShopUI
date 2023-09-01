@@ -16,11 +16,11 @@ namespace Toem.ShopSystem
 
         [Header("Category")]
         [SerializeField] Image categoryIconIamge;
-        
+
         [Header("Current Item")]
         [SerializeField] Text ItemName;
         [SerializeField] Text description;
-        [SerializeField] int ItemPrice;
+        [SerializeField] Text ItemPrice;
 
         void Start()
         {
@@ -53,7 +53,7 @@ namespace Toem.ShopSystem
         public void SetCurrentItemInfo(ItemData data){
             description.text = data.description;
             ItemName.text = data.itemName;
-            ItemPrice = data.purchase;
+            ItemPrice.text = data.itemPriceText;
         }
 
     }
