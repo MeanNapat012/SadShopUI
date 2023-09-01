@@ -44,14 +44,20 @@ namespace Toem.ShopSystem
 
         void PrevItem()
         {
-            if(currentItemIndex <= 0) return;
+            if(currentItemIndex <= 0)
+            {
+                return;
+            }
             currentItemIndex--;
             RefreshUI();
         }
 
         void NextItem()
         {
-            if(currentItemIndex >= maxShowItemCount - 1) return;
+            if(currentItemIndex >= maxShowItemCount - 1)
+            {
+                return;
+            }
             currentItemIndex++;
             RefreshUI();
         }
