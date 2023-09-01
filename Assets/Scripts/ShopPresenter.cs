@@ -78,7 +78,32 @@ namespace Toem.ShopSystem
 
         void RefreshUI()
         {
-            
+            var currentCategoryInfo = categoryInfoList[currentCategoryIndex];
+            uiShop.SetCategory(currentCategoryInfo);
+
+            var currentCategory = (ItemType)currentCategoryIndex;
+            var itemsToDisplay = shopstore.GetItemsByType(currentCategory);
+            maxShowItemCount = itemsToDisplay.Length;
+
+            if(maxShowItemCount <= 0){
+                uiShop.ClearAllItemUI();
+                return;
+            }
+            var currentItem = itemsToDisplay[currentItemIndex];
+            uiShop.SetCurrentItemInfo(currentItem);
+
+            var uiDataList = new List<UIItemData>();
+            var currentPageIndex = currentItemIndex/pageSize;
+            var startIdexToDisplay = currentPageIndex * pageSize;
+            var endIndexToDisplay = startIdexToDisplay+pageSize;
+            var i =0;
+            foreach(var item in itemsToDisplay){
+                if(i >= startIdexToDisplay && i < endIndexToDisplay){
+                    uiDataList.Add(new UIItemData(item, currentItem == item));
+                }
+                i++;
+            }
+            uiShop.SetItemList(uiDataList.ToArray());
         }
     }
 }

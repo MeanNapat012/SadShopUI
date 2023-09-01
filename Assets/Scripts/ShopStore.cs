@@ -32,7 +32,7 @@ namespace Toem.ShopSystem
     public class ItemData
     {
         public string itemName;
-        public string itemdascription;
+        public string description;
         public Sprite itemShop;
         public ItemType Type;
         public int purchase;

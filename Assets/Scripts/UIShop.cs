@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +17,10 @@ namespace Toem.ShopSystem
         [Header("Category")]
         [SerializeField] Image categoryIconIamge;
         [SerializeField] Text categoryText;
+        [Header("Current Item")]
+        [SerializeField] Text ItemName;
+        [SerializeField] Text description;
+        [SerializeField] int ItemPrice;
 
         void Start()
         {
@@ -43,6 +49,12 @@ namespace Toem.ShopSystem
         {
             foreach(UIItemShop uIItemShop in itemUIList) Destroy(uIItemShop.gameObject);
             itemUIList.Clear();
+        }
+
+        public void SetCurrentItemInfo(ItemData data){
+            description.text = data.description;
+            ItemName.text = data.itemName;
+            ItemPrice = data.purchase;
         }
 
     }
