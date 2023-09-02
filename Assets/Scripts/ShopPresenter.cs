@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace Toem.ShopSystem
@@ -12,9 +13,9 @@ namespace Toem.ShopSystem
         int maxCategoryCount = 3;
         int maxShowItemCount;
         int pageSize = 6;
-
         [SerializeField] UIShop uiShop;
         [SerializeField] ShopStore shopstore;
+        [SerializeField] PlayerCoin playerCoin;
         [SerializeField] List<CategoryInfo> categoryInfoList = new List<CategoryInfo>();
 
         void Start()
@@ -24,6 +25,7 @@ namespace Toem.ShopSystem
 
         void Update()
         {
+            
             if(Input.GetKeyDown(KeyCode.A))
             {
                 PrevItem();
@@ -39,6 +41,10 @@ namespace Toem.ShopSystem
             else if (Input.GetKeyDown(KeyCode.E))
             {
                 NextCategory();
+            }
+            else if(Input.GetKeyDown(KeyCode.Space))
+            {
+                Purchase();
             }
         }
 
@@ -81,6 +87,13 @@ namespace Toem.ShopSystem
             currentCategoryIndex++;
             RefreshUI();
         }
+
+        void Purchase()
+        {
+            
+        }
+
+        
 
         void RefreshUI()
         {

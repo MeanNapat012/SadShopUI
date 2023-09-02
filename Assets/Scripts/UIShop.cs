@@ -21,6 +21,7 @@ namespace Toem.ShopSystem
         [SerializeField] Text ItemName;
         [SerializeField] Text description;
         [SerializeField] Text ItemPrice;
+        
 
         void Start()
         {
@@ -53,7 +54,7 @@ namespace Toem.ShopSystem
         public void SetCurrentItemInfo(ItemData data){
             description.text = data.description;
             ItemName.text = data.itemName;
-            ItemPrice.text = data.itemPriceText;
+            ItemPrice.text = data.purchase.ToString();
         }
 
     }

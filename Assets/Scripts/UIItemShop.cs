@@ -17,8 +17,6 @@ namespace Toem.ShopSystem
             itemImage.sprite = data.itemData.itemShop;
             pointerImage.gameObject.SetActive(data.isSelected);
         }
-
-        
     }
 
     public class UIItemData

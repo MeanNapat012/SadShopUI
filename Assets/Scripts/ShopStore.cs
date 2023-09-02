@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 namespace Toem.ShopSystem
@@ -21,11 +23,7 @@ namespace Toem.ShopSystem
             }
             return resultList.ToArray();
         }
-
-        public void Purchase()
-        {
-
-        }
+        
     }
 
     [Serializable]
@@ -33,10 +31,8 @@ namespace Toem.ShopSystem
     {
         public string itemName;
         public string description;
-        public string ItemPriceText;
         public Sprite itemShop;
         public ItemType Type;
-        public string itemPriceText;
         public int purchase;
     }
 
