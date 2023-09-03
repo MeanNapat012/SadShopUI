@@ -10,22 +10,22 @@ namespace Toem.ShopSystem
 
         public int currentpagesize = 6;
 
+        public void buttonPagesize2()
+        {
+            currentpagesize = 2;
+            shopPresenter.RefreshUI();
+        }
+
+        public void buttonPagesize4()
+        {
+            currentpagesize = 4;
+            shopPresenter.RefreshUI();
+        }
+
         public void buttonPagesize6()
         {
             currentpagesize = 6;
-            //shopPresenter.RefreshUI();
-        }
-
-        public void buttonPagesize10()
-        {
-            currentpagesize = 10;
-            //shopPresenter.RefreshUI();
-        }
-
-        public void buttonPagesize15()
-        {
-            currentpagesize = 15;
-            //shopPresenter.RefreshUI();
+            shopPresenter.RefreshUI();
         }
     }
 }
