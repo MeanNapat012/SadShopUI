@@ -14,6 +14,7 @@ namespace Toem.ShopSystem
         int maxShowItemCount;
         int pageSize = 6;
         [SerializeField] UIShop uiShop;
+        [SerializeField] UIShop NewuiShop;
         [SerializeField] ShopStore shopstore;
         [SerializeField] PlayerCoin playerCoin;
         [SerializeField] List<CategoryInfo> categoryInfoList = new List<CategoryInfo>();
@@ -99,6 +100,7 @@ namespace Toem.ShopSystem
         {
             var currentCategoryInfo = categoryInfoList[currentCategoryIndex];
             uiShop.SetCategory(currentCategoryInfo);
+            NewuiShop.SetCategory(currentCategoryInfo);
 
             var currentCategory = (ItemType)currentCategoryIndex;
             var itemsToDisplay = shopstore.GetItemsByType(currentCategory);
@@ -110,6 +112,7 @@ namespace Toem.ShopSystem
             }
             var currentItem = itemsToDisplay[currentItemIndex];
             uiShop.SetCurrentItemInfo(currentItem);
+            NewuiShop.SetCategory(currentCategoryInfo);
 
             var uiDataList = new List<UIItemData>();
             var currentPageIndex = currentItemIndex/pageSize;
@@ -123,6 +126,7 @@ namespace Toem.ShopSystem
                 i++;
             }
             uiShop.SetItemList(uiDataList.ToArray());
+            NewuiShop.SetItemList(uiDataList.ToArray());
         }
     }
 }
