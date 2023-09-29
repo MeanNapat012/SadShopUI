@@ -126,7 +126,6 @@ namespace Toem.ShopSystem
 
             var uiDataList = new List<UIItemData>();
             var currentPageIndex = currentItemIndex/pageSize;
-            Debug.Log(currentPageIndex);
             var startIdexToDisplay = currentPageIndex * pageSize;
             var endIndexToDisplay = startIdexToDisplay+pageSize;
 
