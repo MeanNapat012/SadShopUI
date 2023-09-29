@@ -1,32 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 namespace Toem.ShopSystem
 {
-    public class ShopPresenter : MonoBehaviour
+    public class NewShopPresenter : MonoBehaviour
     {
+
+        [SerializeField] string savePath;
+        [SerializeField] string onlineLoadPath;
         int currentItemIndex;
         int currentCategoryIndex;
-
         int maxCategoryCount = 3;
         int maxShowItemCount;
-        int pageSize = 6;
+        public int pageSize;
+
+        [SerializeField] Pagesize currecntPageSize;
         [SerializeField] UIShop uiShop;
         [SerializeField] UIShop NewuiShop;
         [SerializeField] ShopStore shopstore;
         [SerializeField] PlayerCoin playerCoin;
         [SerializeField] List<CategoryInfo> categoryInfoList = new List<CategoryInfo>();
 
-        void Start()
+        private void Awake()
         {
             RefreshUI();
+            LoadScoreFromGoogleDrive();
         }
 
         void Update()
         {
-            
+            if (pageSize != currecntPageSize.currentpagesize)
+            {
+                pageSize = currecntPageSize.currentpagesize;
+                RefreshUI();
+            }
+                    
             if(Input.GetKeyDown(KeyCode.A))
             {
                 PrevItem();
@@ -76,6 +85,7 @@ namespace Toem.ShopSystem
                 return;
             } 
             currentCategoryIndex--;
+            currentItemIndex = 0;
             RefreshUI();
         }
 
@@ -86,17 +96,64 @@ namespace Toem.ShopSystem
                 return;
             }
             currentCategoryIndex++;
+            currentItemIndex = 0;
             RefreshUI();
         }
 
         void Purchase()
         {
-            
+                    
         }
 
-        
+        void SaveScoreData()
+        {
+            if(string.IsNullorEmpty(savePath))
+            {
+                Debug.LogError("No save");
+                return;
+            }
+            var scoreJson = JsonConvert.SerializeObject(uiShop.itemList, new JsonSerializerSetting
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });;
+            var dataPath = Appication.dataPath;
+            var targetFilePath = dataPath.Combine(dataPath, savePath);
 
-        void RefreshUI()
+            var directoryPath = dataPath.GetDirectoryName(targetFilePath);
+            if(Directory.Exists(directoryPath) == false)
+            {
+                directoryPath.CreateDirectory(directoryPath);
+            }
+            File.WriteAllText(targetFilePath, scoreJson);
+        }
+        IEnumerator LoadScoreRoutine(string url)
+        {
+            var webRequest = UnityWebRequest.Get(url);
+
+            var progress = webRequest.downloadProgress;
+            Debug.Log(progress);
+
+            yield return webRequest.SendWebRequest();
+
+            if(webRequest.result != UnityWebRequest.Result.Success)
+            {
+                Debug.Log("WebRequest.error");
+            }
+            else
+            {
+                var downloadText = webRequest.downloadHandler.text;
+                Debug.Log("Recive Data : "+ downloadText);
+                uiShop.itemList = JsonConvert.DeserializeObject<List<ItemData>>(downloadText);
+            }
+            RefreshUI();
+        }
+
+        void LoadScoreFromGoogleDrive()
+        {
+            StartCoroutine(LoadScoreRoutine(onlineLoadPath));
+        }
+
+        public void RefreshUI()
         {
             var currentCategoryInfo = categoryInfoList[currentCategoryIndex];
             uiShop.SetCategory(currentCategoryInfo);
@@ -108,6 +165,7 @@ namespace Toem.ShopSystem
 
             if(maxShowItemCount <= 0){
                 uiShop.ClearAllItemUI();
+                NewuiShop.ClearAllItemUI();
                 return;
             }
             var currentItem = itemsToDisplay[currentItemIndex];
@@ -118,6 +176,7 @@ namespace Toem.ShopSystem
             var currentPageIndex = currentItemIndex/pageSize;
             var startIdexToDisplay = currentPageIndex * pageSize;
             var endIndexToDisplay = startIdexToDisplay+pageSize;
+
             var i =0;
             foreach(var item in itemsToDisplay){
                 if(i >= startIdexToDisplay && i < endIndexToDisplay){
