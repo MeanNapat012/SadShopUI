@@ -1,20 +1,24 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Newtonsoft.Json;
+using UnityEngine.Networking;
+using System.IO;
+using System.Collections;
 
 namespace Toem.ShopSystem
 {
     public class NewShopPresenter : MonoBehaviour
     {
-
-        [SerializeField] string savePath;
-        [SerializeField] string onlineLoadPath;
+        
         int currentItemIndex;
         int currentCategoryIndex;
+
         int maxCategoryCount = 3;
         int maxShowItemCount;
         public int pageSize;
 
+        [SerializeField] string savePath;
+        [SerializeField] string onLineGoogleDive;
         [SerializeField] Pagesize currecntPageSize;
         [SerializeField] UIShop uiShop;
         [SerializeField] UIShop NewuiShop;
@@ -22,10 +26,12 @@ namespace Toem.ShopSystem
         [SerializeField] PlayerCoin playerCoin;
         [SerializeField] List<CategoryInfo> categoryInfoList = new List<CategoryInfo>();
 
-        private void Awake()
+
+
+        void Start()
         {
             RefreshUI();
-            LoadScoreFromGoogleDrive();
+            LoadItemFromGoogleDive();
         }
 
         void Update()
@@ -35,7 +41,7 @@ namespace Toem.ShopSystem
                 pageSize = currecntPageSize.currentpagesize;
                 RefreshUI();
             }
-                    
+            
             if(Input.GetKeyDown(KeyCode.A))
             {
                 PrevItem();
@@ -102,56 +108,58 @@ namespace Toem.ShopSystem
 
         void Purchase()
         {
-                    
+            
         }
 
+        [ContextMenu(nameof(SaveScoreData))]
         void SaveScoreData()
         {
-            if(string.IsNullorEmpty(savePath))
+            if(string.IsNullOrEmpty(savePath))
             {
-                Debug.LogError("No save");
+                Debug.LogError("No save path");
                 return;
             }
-            var scoreJson = JsonConvert.SerializeObject(uiShop.itemList, new JsonSerializerSetting
+
+            var scoreJson = JsonConvert.SerializeObject(shopstore.itemList, new JsonSerializerSettings
             {
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-            });;
-            var dataPath = Appication.dataPath;
-            var targetFilePath = dataPath.Combine(dataPath, savePath);
+            }); ;
+            var dataPath = Application.dataPath;
+            var targetFilePath = Path.Combine(dataPath, savePath);
 
-            var directoryPath = dataPath.GetDirectoryName(targetFilePath);
+            var directoryPath = System.IO.Path.GetDirectoryName(targetFilePath);
             if(Directory.Exists(directoryPath) == false)
             {
-                directoryPath.CreateDirectory(directoryPath);
+                Directory.CreateDirectory(directoryPath);
             }
             File.WriteAllText(targetFilePath, scoreJson);
         }
-        IEnumerator LoadScoreRoutine(string url)
+        IEnumerator LoadScoreRourtine(string url)
         {
             var webRequest = UnityWebRequest.Get(url);
-
             var progress = webRequest.downloadProgress;
             Debug.Log(progress);
-
             yield return webRequest.SendWebRequest();
 
             if(webRequest.result != UnityWebRequest.Result.Success)
             {
-                Debug.Log("WebRequest.error");
+                Debug.LogError(webRequest.error);
             }
             else
             {
-                var downloadText = webRequest.downloadHandler.text;
-                Debug.Log("Recive Data : "+ downloadText);
-                uiShop.itemList = JsonConvert.DeserializeObject<List<ItemData>>(downloadText);
+                var downloadedText = webRequest.downloadHandler.text;
+                Debug.Log("Data : " + downloadedText);
+                shopstore.itemList = JsonConvert.DeserializeObject<List<ItemData>>(downloadedText);
             }
             RefreshUI();
         }
 
-        void LoadScoreFromGoogleDrive()
+        [ContextMenu(nameof(LoadItemFromGoogleDive))]
+        void LoadItemFromGoogleDive()
         {
-            StartCoroutine(LoadScoreRoutine(onlineLoadPath));
+            StartCoroutine(LoadScoreRourtine(onLineGoogleDive));
         }
+        
 
         public void RefreshUI()
         {
