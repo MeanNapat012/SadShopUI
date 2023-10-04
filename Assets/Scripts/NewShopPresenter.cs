@@ -30,7 +30,6 @@ namespace Toem.ShopSystem
 
         void Start()
         {
-            RefreshUI();
             LoadItemFromGoogleDive();
         }
 
@@ -163,6 +162,10 @@ namespace Toem.ShopSystem
 
         public void RefreshUI()
         {
+            if (currentCategoryIndex < 0 || currentCategoryIndex >= categoryInfoList.Count)
+            {
+                return;
+            }
             var currentCategoryInfo = categoryInfoList[currentCategoryIndex];
             uiShop.SetCategory(currentCategoryInfo);
             NewuiShop.SetCategory(currentCategoryInfo);

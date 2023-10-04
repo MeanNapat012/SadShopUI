@@ -1287,7 +1287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a84d7ae4736f944d90c1a920584e2ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopPresenter: {fileID: 329705630}
+  newShopPresenter: {fileID: 0}
   currentpagesize: 6
 --- !u!114 &329705633
 MonoBehaviour:
@@ -2891,6 +2891,7 @@ GameObject:
   - component: {fileID: 987515161}
   - component: {fileID: 987515160}
   - component: {fileID: 987515159}
+  - component: {fileID: 987515163}
   m_Layer: 0
   m_Name: NewShop
   m_TagString: Untagged
@@ -2930,8 +2931,11 @@ MonoBehaviour:
   uiShop: {fileID: 386236375}
   NewuiShop: {fileID: 286840909}
   shopstore: {fileID: 987515159}
-  playerCoin: {fileID: 0}
-  categoryInfoList: []
+  playerCoin: {fileID: 987515163}
+  categoryInfoList:
+  - icon: {fileID: 1434664425, guid: a1365136105a55746b5a8a755e16c20c, type: 3}
+  - icon: {fileID: -1281105831, guid: a1365136105a55746b5a8a755e16c20c, type: 3}
+  - icon: {fileID: 226217526, guid: a1365136105a55746b5a8a755e16c20c, type: 3}
 --- !u!114 &987515161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2944,7 +2948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a84d7ae4736f944d90c1a920584e2ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopPresenter: {fileID: 0}
+  newShopPresenter: {fileID: 987515160}
   currentpagesize: 6
 --- !u!4 &987515162
 Transform:
@@ -2961,6 +2965,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &987515163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987515158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9385d2c3893c56b4ab4446932c95171b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CoinText: {fileID: 1689088674}
+  money: 1000
 --- !u!1 &1099768189
 GameObject:
   m_ObjectHideFlags: 0
