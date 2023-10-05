@@ -6,26 +6,27 @@ namespace Toem.ShopSystem
 {
     public class Pagesize : MonoBehaviour
     {
-        [SerializeField] ShopPresenter shopPresenter;
+        //[SerializeField] ShopPresenter shopPresenter;
+        [SerializeField] NewShopPresenter newShopPresenter;
 
         public int currentpagesize = 6;
 
         public void buttonPagesize2()
         {
             currentpagesize = 2;
-            shopPresenter.RefreshUI();
+            newShopPresenter.RefreshUI();
         }
 
         public void buttonPagesize4()
         {
             currentpagesize = 4;
-            shopPresenter.RefreshUI();
+            newShopPresenter.RefreshUI();
         }
 
         public void buttonPagesize6()
         {
             currentpagesize = 6;
-            shopPresenter.RefreshUI();
+            newShopPresenter.RefreshUI();
         }
     }
 }

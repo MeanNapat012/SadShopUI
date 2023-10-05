@@ -42,4 +42,10 @@ public class ButtoGoToShop : MonoBehaviour
         shopPresenter.currentItemIndex = 0;
         shopPresenter.RefreshUI();
     }
+
+    public void CloseAll()
+    {
+        SadShopUI1.SetActive(false);
+        SadShopUI2.SetActive(false);
+    }
 }

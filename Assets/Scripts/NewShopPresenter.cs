@@ -1,12 +1,15 @@
-using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using Newtonsoft.Json;
+using UnityEngine.Networking;
+using System.IO;
+using System.Collections;
 
 namespace Toem.ShopSystem
 {
-    public class ShopPresenter : MonoBehaviour
+    public class NewShopPresenter : MonoBehaviour
     {
+        
         int currentItemIndex;
         int currentCategoryIndex;
 
@@ -14,6 +17,8 @@ namespace Toem.ShopSystem
         int maxShowItemCount;
         public int pageSize;
 
+        [SerializeField] string savePath;
+        [SerializeField] string onLineGoogleDive;
         [SerializeField] Pagesize currecntPageSize;
         [SerializeField] UIShop uiShop;
         [SerializeField] UIShop NewuiShop;
@@ -21,9 +26,11 @@ namespace Toem.ShopSystem
         [SerializeField] PlayerCoin playerCoin;
         [SerializeField] List<CategoryInfo> categoryInfoList = new List<CategoryInfo>();
 
+
+
         void Start()
         {
-            RefreshUI();
+            LoadItemFromGoogleDive();
         }
 
         void Update()
@@ -103,10 +110,62 @@ namespace Toem.ShopSystem
             
         }
 
+        [ContextMenu(nameof(SaveScoreData))]
+        void SaveScoreData()
+        {
+            if(string.IsNullOrEmpty(savePath))
+            {
+                Debug.LogError("No save path");
+                return;
+            }
+
+            var scoreJson = JsonConvert.SerializeObject(shopstore.itemList, new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            }); ;
+            var dataPath = Application.dataPath;
+            var targetFilePath = Path.Combine(dataPath, savePath);
+
+            var directoryPath = System.IO.Path.GetDirectoryName(targetFilePath);
+            if(Directory.Exists(directoryPath) == false)
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+            File.WriteAllText(targetFilePath, scoreJson);
+        }
+        IEnumerator LoadScoreRourtine(string url)
+        {
+            var webRequest = UnityWebRequest.Get(url);
+            var progress = webRequest.downloadProgress;
+            Debug.Log(progress);
+            yield return webRequest.SendWebRequest();
+
+            if(webRequest.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError(webRequest.error);
+            }
+            else
+            {
+                var downloadedText = webRequest.downloadHandler.text;
+                Debug.Log("Data : " + downloadedText);
+                shopstore.itemList = JsonConvert.DeserializeObject<List<ItemData>>(downloadedText);
+            }
+            RefreshUI();
+        }
+
+        [ContextMenu(nameof(LoadItemFromGoogleDive))]
+        void LoadItemFromGoogleDive()
+        {
+            StartCoroutine(LoadScoreRourtine(onLineGoogleDive));
+        }
         
 
         public void RefreshUI()
         {
+            if (currentCategoryIndex < 0 || currentCategoryIndex >= categoryInfoList.Count)
+            {
+                return;
+            }
             var currentCategoryInfo = categoryInfoList[currentCategoryIndex];
             uiShop.SetCategory(currentCategoryInfo);
             NewuiShop.SetCategory(currentCategoryInfo);
