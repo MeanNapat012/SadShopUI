@@ -1,0 +1,32 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using DG.Tweening;
+
+public class ShopAnimation : MonoBehaviour
+{
+   public float fadeTime = 1f;
+   public CanvasGroup canvasGroup;
+   public CanvasGroup canvasGroup2;
+   public RectTransform rectTransform;
+   public RectTransform rectTransform2;
+
+
+   public void PanelfadeIn(){
+    canvasGroup.alpha = 0f;
+    rectTransform.transform.localPosition = new Vector3(0f, -1000f, 0f);
+    rectTransform.DOAnchorPos(new Vector2(0f, 0f), fadeTime, false).SetEase(Ease.InOutQuint);
+    rectTransform2.DOAnchorPos(new Vector2(0f, 0f), fadeTime, false).SetEase(Ease.InOutQuint);
+    canvasGroup.DOFade(1, fadeTime);
+    canvasGroup2.DOFade(1, fadeTime);
+   }
+   public void Panelfadeout(){
+    canvasGroup.alpha = 0f;
+    rectTransform.transform.localPosition = new Vector3(0f, 0f, 0f);
+    rectTransform.DOAnchorPos(new Vector2(0f, -1000f), fadeTime, false).SetEase(Ease.InOutQuint);
+    rectTransform2.DOAnchorPos(new Vector2(0f, -1000f), fadeTime, false).SetEase(Ease.InOutQuint);
+    canvasGroup.DOFade(1, fadeTime);
+    canvasGroup2.DOFade(1, fadeTime);
+   }
+
+}

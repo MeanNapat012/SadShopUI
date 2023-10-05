@@ -10,7 +10,7 @@ public class ButtoGoToShop : MonoBehaviour
 
     [SerializeField] GameObject SadShopUI1;
     [SerializeField] GameObject SadShopUI2;
-    [SerializeField] ShopPresenter shopPresenter;
+    [SerializeField] NewShopPresenter newshopPresenter;
 
     void Start()
     {
@@ -38,9 +38,9 @@ public class ButtoGoToShop : MonoBehaviour
 
     public void ResetPage()
     {
-        shopPresenter.currentCategoryIndex = 0;
-        shopPresenter.currentItemIndex = 0;
-        shopPresenter.RefreshUI();
+        newshopPresenter.currentCategoryIndex = 0;
+        newshopPresenter.currentItemIndex = 0;
+        newshopPresenter.RefreshUI();
     }
 
     public void CloseAll()
