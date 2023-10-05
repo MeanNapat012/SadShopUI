@@ -1,0 +1,143 @@
+[
+    {
+        "ItemName" : 1,
+        "Description" : "Item is 1",
+        "ItemShop" : "https://drive.google.com/drive/folders/1scL02iyABiNNR2bbilB1MqipY_Sk6vJJ",
+        "Type" : 1,
+        "Purchase" : 10
+    },
+    {
+        
+        "ItemName" : 2,
+        "Description" : "Item is 2",
+        "ItemShop" : "https://drive.google.com/drive/folders/1scL02iyABiNNR2bbilB1MqipY_Sk6vJJ",
+        "Type" : 1,
+        "Purchase" : 9999
+    },
+    {
+        "ItemName" : 3,
+        "Description" : "Item is 3",
+        "ItemShop" : "https://drive.google.com/drive/folders/1scL02iyABiNNR2bbilB1MqipY_Sk6vJJ",
+        "Type" : 1,
+        "Purchase" : 200
+    },
+    {
+        "ItemName" : "4",
+        "Description" : "Item is 4",
+        "ItemShop" : "https://drive.google.com/drive/folders/1scL02iyABiNNR2bbilB1MqipY_Sk6vJJ",
+        "Type" : 1,
+        "Purchase" : 555
+    },
+    {
+        "ItemName" : "5",
+        "Description" : "Item is 5",
+        "ItemShop" : "https://drive.google.com/drive/folders/1scL02iyABiNNR2bbilB1MqipY_Sk6vJJ",
+        "Type" : 1,
+        "Purchase" : 666
+    },
+    {
+        "ItemName" : "6",
+        "Description" : "Item is 6",
+        "ItemShop" : "https://drive.google.com/drive/folders/1scL02iyABiNNR2bbilB1MqipY_Sk6vJJ",
+        "Type" : 1,
+        "Purchase" : 666
+    },
+    {
+        "ItemName" : "7",
+        "Description" : "Item is 7",
+        "ItemShop" : "https://drive.google.com/drive/folders/1scL02iyABiNNR2bbilB1MqipY_Sk6vJJ",
+        "Type" : 1,
+        "Purchase" : 666
+    },
+    {
+        "ItemName" : "8",
+        "Description" : "Item is 8",
+        "ItemShop" : "https://drive.google.com/drive/folders/1scL02iyABiNNR2bbilB1MqipY_Sk6vJJ",
+        "Type" : 1,
+        "Purchase" : 950
+    },
+    {
+        "ItemName" : "9",
+        "Description" : "Item is 9",
+        "ItemShop" : "https://drive.google.com/drive/folders/1scL02iyABiNNR2bbilB1MqipY_Sk6vJJ",
+        "Type" : 1,
+        "Purchase" : 258
+    },
+    {
+        "ItemName" : "10",
+        "Description" : "Item is 10",
+        "ItemShop" : "https://drive.google.com/drive/folders/1scL02iyABiNNR2bbilB1MqipY_Sk6vJJ",
+        "Type" : 2,
+        "Purchase" : 789
+    },
+    {
+        "ItemName" : "11",
+        "Description" : "Item is 11",
+        "ItemShop" : "https://drive.google.com/drive/folders/1scL02iyABiNNR2bbilB1MqipY_Sk6vJJ",
+        "Type" : 2,
+        "Purchase" : 123
+    },
+    {
+        "ItemName" : "12",
+        "Description" : "Item is 12",
+        "ItemShop" : "https://drive.google.com/drive/folders/1scL02iyABiNNR2bbilB1MqipY_Sk6vJJ",
+        "Type" : 2,
+        "Purchase" : 545
+    },
+    {
+        "ItemName" : "13",
+        "Description" : "Item is 13",
+        "ItemShop" : "https://drive.google.com/drive/folders/1scL02iyABiNNR2bbilB1MqipY_Sk6vJJ",
+        "Type" : 2,
+        "Purchase" : 500
+    },
+    {
+        "ItemName" : "14",
+        "Description" : "Item is 14",
+        "ItemShop" : "https://drive.google.com/drive/folders/1scL02iyABiNNR2bbilB1MqipY_Sk6vJJ",
+        "Type" : 2,
+        "Purchase" : 200
+    },
+    {
+        "ItemName" : "15",
+        "Description" : "Item is 15",
+        "ItemShop" : "https://drive.google.com/drive/folders/1scL02iyABiNNR2bbilB1MqipY_Sk6vJJ",
+        "Type" : 2,
+        "Purchase" : 300
+    },
+    {
+        "ItemName" : "16",
+        "Description" : "Item is 16",
+        "ItemShop" : "https://drive.google.com/drive/folders/1scL02iyABiNNR2bbilB1MqipY_Sk6vJJ",
+        "Type" : 3,
+        "Purchase" : 100
+    },
+    {
+        "ItemName" : "17",
+        "Description" : "Item is 17",
+        "ItemShop" : "https://drive.google.com/drive/folders/1scL02iyABiNNR2bbilB1MqipY_Sk6vJJ",
+        "Type" : 3,
+        "Purchase" : 400
+    },
+    {
+        "ItemName" : "18",
+        "Description" : "Item is 18",
+        "ItemShop" : "https://drive.google.com/drive/folders/1scL02iyABiNNR2bbilB1MqipY_Sk6vJJ",
+        "Type" : 3,
+        "Purchase" : 910 
+    },
+    {
+        "ItemName" : "19",
+        "Description" : "Item is 19",
+        "ItemShop" : "https://drive.google.com/drive/folders/1scL02iyABiNNR2bbilB1MqipY_Sk6vJJ",
+        "Type" : 3,
+        "Purchase" : 300
+    },
+    {
+        "ItemName" : "20",
+        "Description" : "Item is 20",
+        "ItemShop" : "https://drive.google.com/drive/folders/1scL02iyABiNNR2bbilB1MqipY_Sk6vJJ",
+        "Type" : 3,
+        "Purchase" : 777
+    }
+]

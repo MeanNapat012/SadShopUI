@@ -10,13 +10,14 @@ namespace Toem.ShopSystem
     public class NewShopPresenter : MonoBehaviour
     {
         
-        int currentItemIndex;
-        int currentCategoryIndex;
+        public int currentItemIndex;
+        public int currentCategoryIndex;
 
         int maxCategoryCount = 3;
-        int maxShowItemCount;
+        public int maxShowItemCount;
         public int pageSize;
 
+        [SerializeField] ButtoGoToShop buttoGoToShop;
         [SerializeField] string savePath;
         [SerializeField] string onLineGoogleDive;
         [SerializeField] Pagesize currecntPageSize;
@@ -41,23 +42,47 @@ namespace Toem.ShopSystem
                 RefreshUI();
             }
             
-            if(Input.GetKeyDown(KeyCode.A))
+            if((buttoGoToShop.oldShop == true) && (buttoGoToShop.newShop == false))
             {
-                PrevItem();
+                if(Input.GetKeyDown(KeyCode.A))
+                {
+                    PrevItem();
+                }
+                else if(Input.GetKeyDown(KeyCode.D))
+                {
+                    NextItem();
+                }
+                else if(Input.GetKeyDown(KeyCode.Q))
+                {
+                    PrevCategory();
+                }
+                else if(Input.GetKeyDown(KeyCode.E))
+                {
+                    NextCategory();
+                }
             }
-            else if(Input.GetKeyDown(KeyCode.D))
+
+            if((buttoGoToShop.oldShop == false) && (buttoGoToShop.newShop == true))
             {
-                NextItem();
+                if(Input.GetKeyDown(KeyCode.W))
+                {
+                    PrevItem();
+                }
+                else if(Input.GetKeyDown(KeyCode.S))
+                {
+                    NextItem();
+                }
+                else if (Input.GetKeyDown(KeyCode.E))
+                {
+                    PrevCategory();
+                }
+                else if (Input.GetKeyDown(KeyCode.D))
+                {
+                    NextCategory();
+                }
             }
-            else if (Input.GetKeyDown(KeyCode.Q))
-            {
-                PrevCategory();
-            }
-            else if (Input.GetKeyDown(KeyCode.E))
-            {
-                NextCategory();
-            }
-            else if(Input.GetKeyDown(KeyCode.Space))
+            
+            if(Input.GetKeyDown(KeyCode.Space))
             {
                 Purchase();
             }
@@ -181,7 +206,7 @@ namespace Toem.ShopSystem
             }
             var currentItem = itemsToDisplay[currentItemIndex];
             uiShop.SetCurrentItemInfo(currentItem);
-            NewuiShop.SetCategory(currentCategoryInfo);
+            NewuiShop.SetCurrentItemInfo(currentItem);
 
             var uiDataList = new List<UIItemData>();
             var currentPageIndex = currentItemIndex/pageSize;

@@ -12,7 +12,7 @@ namespace Toem.ShopSystem
     public class ShopStore : MonoBehaviour
     {
         public ItemData[] ItemArray => itemList.ToArray();
-        [SerializeField] List<ItemData> itemList = new List<ItemData>();
+        [SerializeField] public List<ItemData> itemList = new List<ItemData>();
 
         public ItemData[] GetItemsByType(ItemType targetType)
         {

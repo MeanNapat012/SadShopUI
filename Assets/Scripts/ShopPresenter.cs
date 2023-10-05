@@ -7,14 +7,13 @@ namespace Toem.ShopSystem
 {
     public class ShopPresenter : MonoBehaviour
     {
-        public int currentItemIndex;
-        public int currentCategoryIndex;
+        int currentItemIndex;
+        int currentCategoryIndex;
 
         int maxCategoryCount = 3;
-        public int maxShowItemCount;
+        int maxShowItemCount;
         public int pageSize;
 
-        [SerializeField] ButtoGoToShop buttoGoToShop;
         [SerializeField] Pagesize currecntPageSize;
         [SerializeField] UIShop uiShop;
         [SerializeField] UIShop NewuiShop;
@@ -35,47 +34,23 @@ namespace Toem.ShopSystem
                 RefreshUI();
             }
             
-            if ((buttoGoToShop.oldShop == true) && (buttoGoToShop.newShop == false))
+            if(Input.GetKeyDown(KeyCode.A))
             {
-                if(Input.GetKeyDown(KeyCode.A))
-                {
-                    PrevItem();
-                }
-                else if(Input.GetKeyDown(KeyCode.D))
-                {
-                    NextItem();
-                }
-                else if (Input.GetKeyDown(KeyCode.Q))
-                {
-                    PrevCategory();
-                }
-                else if (Input.GetKeyDown(KeyCode.E))
-                {
-                    NextCategory();
-                }
+                PrevItem();
             }
-
-            if ((buttoGoToShop.oldShop == false) && (buttoGoToShop.newShop == true))
+            else if(Input.GetKeyDown(KeyCode.D))
             {
-                if(Input.GetKeyDown(KeyCode.W))
-                {
-                    PrevItem();
-                }
-                else if(Input.GetKeyDown(KeyCode.S))
-                {
-                    NextItem();
-                }
-                else if (Input.GetKeyDown(KeyCode.E))
-                {
-                    PrevCategory();
-                }
-                else if (Input.GetKeyDown(KeyCode.D))
-                {
-                    NextCategory();
-                }
+                NextItem();
             }
-
-            if(Input.GetKeyDown(KeyCode.Space))
+            else if (Input.GetKeyDown(KeyCode.Q))
+            {
+                PrevCategory();
+            }
+            else if (Input.GetKeyDown(KeyCode.E))
+            {
+                NextCategory();
+            }
+            else if(Input.GetKeyDown(KeyCode.Space))
             {
                 Purchase();
             }
@@ -142,11 +117,12 @@ namespace Toem.ShopSystem
 
             if(maxShowItemCount <= 0){
                 uiShop.ClearAllItemUI();
+                NewuiShop.ClearAllItemUI();
                 return;
             }
             var currentItem = itemsToDisplay[currentItemIndex];
             uiShop.SetCurrentItemInfo(currentItem);
-            NewuiShop.SetCurrentItemInfo(currentItem);
+            NewuiShop.SetCategory(currentCategoryInfo);
 
             var uiDataList = new List<UIItemData>();
             var currentPageIndex = currentItemIndex/pageSize;
