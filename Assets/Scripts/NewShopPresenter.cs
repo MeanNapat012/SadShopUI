@@ -25,9 +25,9 @@ namespace Toem.ShopSystem
         [SerializeField] UIShop NewuiShop;
         [SerializeField] ShopStore shopstore;
         [SerializeField] PlayerCoin playerCoin;
+        [SerializeField] GameObject sadUIShop1;
+        [SerializeField] GameObject loadingScene;
         [SerializeField] List<CategoryInfo> categoryInfoList = new List<CategoryInfo>();
-
-
 
         void Start()
         {
@@ -38,6 +38,7 @@ namespace Toem.ShopSystem
         {
             if (pageSize != currecntPageSize.currentpagesize)
             {
+                StartCoroutine(uiShop.ItemsAnimation());
                 pageSize = currecntPageSize.currentpagesize;
                 RefreshUI();
             }
@@ -117,6 +118,7 @@ namespace Toem.ShopSystem
             currentCategoryIndex--;
             currentItemIndex = 0;
             RefreshUI();
+            StartCoroutine(uiShop.ItemsAnimation());
         }
 
         void NextCategory()
@@ -128,6 +130,7 @@ namespace Toem.ShopSystem
             currentCategoryIndex++;
             currentItemIndex = 0;
             RefreshUI();
+            StartCoroutine(uiShop.ItemsAnimation());
         }
 
         void Purchase()
@@ -175,7 +178,10 @@ namespace Toem.ShopSystem
                 Debug.Log("Data : " + downloadedText);
                 shopstore.itemList = JsonConvert.DeserializeObject<List<ItemData>>(downloadedText);
             }
+            loadingScene.SetActive(false);
+            sadUIShop1.SetActive(true);
             RefreshUI();
+            StartCoroutine(uiShop.ItemsAnimation());
         }
 
         [ContextMenu(nameof(LoadItemFromGoogleDive))]

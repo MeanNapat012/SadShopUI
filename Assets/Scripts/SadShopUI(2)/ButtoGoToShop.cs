@@ -8,13 +8,16 @@ public class ButtoGoToShop : MonoBehaviour
     public bool oldShop = true;
     public bool newShop = false;
 
+    public UIShop uiShop;
+    [SerializeField] GameObject loadingScene;
     [SerializeField] GameObject SadShopUI1;
     [SerializeField] GameObject SadShopUI2;
     [SerializeField] NewShopPresenter newshopPresenter;
 
     void Start()
     {
-        SadShopUI1.SetActive(true);
+        loadingScene.SetActive(true);
+        SadShopUI1.SetActive(false);
         SadShopUI2.SetActive(false);
     }
 
@@ -25,6 +28,7 @@ public class ButtoGoToShop : MonoBehaviour
         oldShop = true;
         newShop = false;
         ResetPage();
+        StartCoroutine(uiShop.ItemsAnimation());
     }
 
     public void GotoShop2()
@@ -34,6 +38,7 @@ public class ButtoGoToShop : MonoBehaviour
         oldShop = false;
         newShop = true;
         ResetPage();
+        StartCoroutine(uiShop.ItemsAnimation());
     }
 
     public void ResetPage()
