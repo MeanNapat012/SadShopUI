@@ -5,6 +5,7 @@ using System.Xml.Serialization;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 namespace Toem.ShopSystem
 {
@@ -21,7 +22,6 @@ namespace Toem.ShopSystem
         [SerializeField] Text ItemName;
         [SerializeField] Text description;
         [SerializeField] Text ItemPrice;
-        
 
         void Start()
         {
@@ -56,7 +56,6 @@ namespace Toem.ShopSystem
             ItemName.text = data.itemName;
             ItemPrice.text = data.purchase.ToString();
         }
-
     }
 
     [Serializable]
