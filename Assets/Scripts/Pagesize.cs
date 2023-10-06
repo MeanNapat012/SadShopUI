@@ -9,11 +9,17 @@ namespace Toem.ShopSystem
         //[SerializeField] ShopPresenter shopPresenter;
         [SerializeField] NewShopPresenter newShopPresenter;
 
-        public int currentpagesize = 6;
+        public int currentpagesize = 4;
 
         public void buttonPagesize2()
         {
             currentpagesize = 2;
+            newShopPresenter.RefreshUI();
+        }
+
+        public void buttonPagesize3()
+        {
+            currentpagesize = 3;
             newShopPresenter.RefreshUI();
         }
 
